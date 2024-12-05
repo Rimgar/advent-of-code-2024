@@ -28,3 +28,4 @@ data class Vector(
 }
 
 operator fun List<String>.get(p: Vector) = this[p.y][p.x]
+fun List<String>.getOrNull(p: Vector) = this.getOrNull(p.y)?.getOrNull(p.x)
