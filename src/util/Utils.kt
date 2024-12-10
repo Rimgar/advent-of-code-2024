@@ -47,6 +47,12 @@ inline fun <T> Iterable<T>.split(predicate: (T) -> Boolean): List<List<T>> {
 
 fun <T> List<T>.repeat(n: Int) = List(n) { this }.flatten()
 
+fun <T> List<T>.allPairs(): List<Pair<T, T>> {
+    return mapIndexed { index, t ->
+        slice(index + 1 until size).map { Pair(t, it) }
+    }.flatten()
+}
+
 fun Iterable<Int>.product(): Int {
     var product = 1
     for (element in this) {
