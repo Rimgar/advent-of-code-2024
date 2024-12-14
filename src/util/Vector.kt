@@ -25,7 +25,15 @@ data class Vector(
     fun cityBlockDistance(other: Vector) = (other - this).length
 
     override fun toString(): String = "($x, $y)"
+
+    companion object {
+
+        val cardinalDirections = listOf(Vector(0, -1), Vector(1, 0), Vector(0, 1), Vector(-1, 0))
+    }
 }
 
 operator fun List<String>.get(p: Vector) = this[p.y][p.x]
 fun List<String>.getOrNull(p: Vector) = this.getOrNull(p.y)?.getOrNull(p.x)
+
+operator fun List<List<Any>>.get(p: Vector) = this[p.y][p.x]
+fun List<List<Any>>.getOrNull(p: Vector) = this.getOrNull(p.y)?.getOrNull(p.x)
