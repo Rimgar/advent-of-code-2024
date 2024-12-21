@@ -37,3 +37,18 @@ fun List<String>.getOrNull(p: Vector) = this.getOrNull(p.y)?.getOrNull(p.x)
 
 operator fun List<List<Any>>.get(p: Vector) = this[p.y][p.x]
 fun List<List<Any>>.getOrNull(p: Vector) = this.getOrNull(p.y)?.getOrNull(p.x)
+
+data class LongVector(
+    val x: Long,
+    val y: Long
+) {
+
+    operator fun unaryMinus() = LongVector(-x, -y)
+    operator fun plus(p: LongVector) = LongVector(x + p.x, y + p.y)
+    operator fun minus(p: LongVector) = LongVector(x - p.x, y - p.y)
+    operator fun times(p: Int) = LongVector(x * p, y * p)
+    operator fun times(p: Long) = LongVector(x * p, y * p)
+    operator fun div(p: Long) = LongVector(x / p, y / p)
+
+    override fun toString(): String = "($x, $y)"
+}
