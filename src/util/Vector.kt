@@ -16,6 +16,7 @@ data class Vector(
     operator fun minus(p: Vector) = Vector(x - p.x, y - p.y)
     operator fun times(p: Int) = Vector(x * p, y * p)
     operator fun div(p: Int) = Vector(x / p, y / p)
+    fun mod(p: Vector) = Vector(x.mod(p.x), y.mod(p.y))
 
     fun turnRight() = Vector(-y, x)
     fun turnLeft() = Vector(y, -x)
