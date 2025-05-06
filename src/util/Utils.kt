@@ -69,6 +69,17 @@ fun Iterable<Long>.product(): Long {
     return product
 }
 
+fun List<String>.findChar(char: Char): Vector {
+    this.forEachIndexed { y, line ->
+        line.forEachIndexed { x, c ->
+            if (c == char) {
+                return Vector(x, y)
+            }
+        }
+    }
+    throw IllegalArgumentException("char $char not found")
+}
+
 fun computeLeastCommonMultiple(num1: Long, num2: Long): Long {
     var multiple1 = num1
     var multiple2 = num2
@@ -97,3 +108,8 @@ fun String.repeat(n: Int, separator: String) = List(n) { this }.joinToString(sep
 
 val IntRange.length: Int
     get() = last - first + 1
+
+operator fun Array<IntArray>.get(p: Vector) = this[p.y][p.x]
+operator fun Array<IntArray>.set(p: Vector, i: Int) {
+    this[p.y][p.x] = i
+}

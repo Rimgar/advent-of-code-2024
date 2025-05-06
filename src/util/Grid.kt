@@ -5,6 +5,11 @@ fun List<String>.toGrid(): Array<CharArray> {
         .toTypedArray()
 }
 
+operator fun Array<CharArray>.get(p: Vector) = this[p.y][p.x]
+operator fun Array<CharArray>.set(p: Vector, c: Char) {
+    this[p.y][p.x] = c
+}
+
 fun Array<CharArray>.printPlatform() {
     forEach { it.joinToString(separator = "").println() }
     "".println()

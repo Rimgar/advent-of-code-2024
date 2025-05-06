@@ -1,6 +1,7 @@
 package day06
 
 import util.Vector
+import util.findChar
 import util.println
 import util.readInput
 import util.toGrid
@@ -83,13 +84,4 @@ private fun Array<CharArray>.detectLoop(start: Vector): Boolean {
     return false
 }
 
-private fun List<String>.findStart(): Vector {
-    this.forEachIndexed { y, line ->
-        line.forEachIndexed { x, c ->
-            if (c == '^') {
-                return Vector(x, y)
-            }
-        }
-    }
-    throw IllegalArgumentException("no start found")
-}
+private fun List<String>.findStart(): Vector = findChar('^')
